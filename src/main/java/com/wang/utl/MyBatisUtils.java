@@ -1,5 +1,7 @@
 package com.wang.utl;
 
+import com.wang.dao.UserDao;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -33,4 +35,5 @@ public class MyBatisUtils {
     public static SqlSession getSqlSession(){
         return sqlSessionFactory.openSession();
     }
+
 }

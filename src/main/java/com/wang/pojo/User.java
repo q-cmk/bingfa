@@ -4,12 +4,11 @@ package com.wang.pojo;
  * @author wqy
  */
 public class User {
-    private int id;
+
     private String name;
     private String pwd;
 
-    public User(int id, String name, String pwd) {
-        this.id = id;
+    public User( String name, String pwd) {
         this.name = name;
         this.pwd = pwd;
     }
@@ -17,7 +16,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", pwd='" + pwd + '\'' +
                 '}';
@@ -26,13 +24,7 @@ public class User {
     public User() {
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

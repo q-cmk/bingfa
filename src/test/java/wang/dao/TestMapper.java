@@ -20,7 +20,7 @@ public class TestMapper {
 //        User user = mapper.selectUserbyId(3);
 //        System.out.println(user.toString());
 
-        int res = mapper.addUser(new User(3, "小红", "234"));
+        int res = mapper.addUser(new User( "小红", "234"));
         if(res>0){
             System.out.println("插入成功");
         }
