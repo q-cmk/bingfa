@@ -1,4 +1,4 @@
-package wang.dao;
+package com.wang.dao;
 
 import java.util.concurrent.*;
 
@@ -16,11 +16,12 @@ public class TestCompletableFuture {
     public static ArticleVO asyncReturn(){
         ArticleVO article = new ArticleVO();
         long startTime=System.currentTimeMillis();
-        CompletableFuture<ArticleVO> articleContext = CompletableFuture.supplyAsync(() -> {
+
+        CompletableFuture<ArticleVO> articleContent = CompletableFuture.supplyAsync(() -> {
             try {
                 article.setId(1L);
                 article.setContent("我是宁在春写的文章内容");
-                Thread.sleep(1000);
+//                Thread.sleep(10000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -28,13 +29,15 @@ public class TestCompletableFuture {
 
         }, executorService);
 
-        CompletableFuture<Void> author = articleContext.thenAcceptAsync((res) -> {
-            res.setAuthor("的作者是王凤霞");
+        //这里的res是第一个CompletableFuture执行返回的结果。
+        CompletableFuture<Void> author = articleContent.thenAcceptAsync((res) -> {
+            res.setAuthor(article.getId()+"的作者是王凤霞");
         }, executorService);
 
-        CompletableFuture<Void> futureAll = CompletableFuture.allOf(articleContext, author);
+        CompletableFuture<Void> futureAll = CompletableFuture.allOf(articleContent,author);
 
         try {
+//            get方法的目的是阻塞，等待所有结果都返回
             futureAll.get();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -57,6 +60,15 @@ public class TestCompletableFuture {
     private Long id;
     private String content;
     private String author;
+
+     @Override
+     public String toString() {
+         return "ArticleVO{" +
+                 "id=" + id +
+                 ", content='" + content + '\'' +
+                 ", author='" + author + '\'' +
+                 '}';
+     }
 
      public Long getId() {
          return id;
