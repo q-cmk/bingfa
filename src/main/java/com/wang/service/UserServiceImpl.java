@@ -3,11 +3,9 @@ package com.wang.service;
 import com.wang.execut.Callers;
 import com.wang.execut.Worker;
 import com.wang.pojo.User;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
-
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
 /**
@@ -75,4 +73,8 @@ public class UserServiceImpl implements UserService {
         return users;
     }
 
+    @Override
+    public void delete(List<Integer> ids) {
+
+    }
 }

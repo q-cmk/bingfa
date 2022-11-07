@@ -16,9 +16,11 @@ public interface UserService {
     void insert(ArrayList<User> users);
 
     /**
-     *
+     * 并发查询多个用户
      * @param ids
      * @return
      */
     List<User> findUserById(List<Integer> ids);
+
+    void delete(List<Integer> ids);
 }
