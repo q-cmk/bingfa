@@ -21,4 +21,13 @@ public class Callers {
         sqlSession.close();
         return user;
     }
+    public void insert(User user) {
+        int i = mapper.addUser(user);
+
+        if(i>0){
+            System.out.println(Thread.currentThread().getName()+"插入用户成功");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
 }

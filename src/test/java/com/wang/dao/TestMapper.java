@@ -11,16 +11,16 @@ public class TestMapper {
     public void test(){
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         UserDao mapper = sqlSession.getMapper(UserDao.class);
-        List<User> userList = mapper.getUserList();
-        userList.forEach(System.out::println);
+//        List<User> userList = mapper.getUserList();
+//        userList.forEach(System.out::println);
 
 
-//        int res = mapper.addUser(new User( "小红", "234"));
-//        if(res>0){
-//            System.out.println("插入成功");
-//        }
-//        //提交事务
-//        sqlSession.commit();
+        int res = mapper.addUser(new User( "三少爷", "897"));
+        if(res>0){
+            System.out.println("插入成功");
+        }
+        //提交事务
+        sqlSession.commit();
         sqlSession.close();
     }
 }

@@ -13,29 +13,16 @@ import static java.util.concurrent.Executors.newFixedThreadPool;
  */
 public class UserServiceImpl implements UserService {
     @Override
-    public void insert(ArrayList<User> users) {
+    public void addUsers(ArrayList<User> users) {
         int n = users.size();
         ExecutorService executorService = newFixedThreadPool(n);
 
-        CountDownLatch readyLatch = new CountDownLatch(n);
-        CountDownLatch startLatch = new CountDownLatch(1);
-        CountDownLatch endLatch = new CountDownLatch(n);
-
+        Callers callers = new Callers();
         for(int i = 0; i < n; i++) {
-            executorService.execute(
-                    new Worker(readyLatch,
-                            startLatch, endLatch,
-                            users.get(i))
-            );
-        }
-        try {
-            readyLatch.await();
-            System.out.println(Thread.currentThread().getName()+"发令开始");
-            startLatch.countDown();
-            endLatch.await();
-            System.out.println(Thread.currentThread().getName()+"所有线程运行完毕");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            final int id = i;
+            executorService.execute(()->{
+                callers.insert(users.get(id));
+            });
         }
         executorService.shutdown();
     }

@@ -13,7 +13,7 @@ public interface UserService {
      * 并发插入多个用户
      * @param users
      */
-    void insert(ArrayList<User> users);
+    void addUsers(ArrayList<User> users);
 
     /**
      * 并发查询多个用户
