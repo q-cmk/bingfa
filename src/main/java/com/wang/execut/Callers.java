@@ -6,6 +6,7 @@ import com.wang.utl.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 
 /**
+ * 资源类
  * @author wqy
  */
 public class Callers {
