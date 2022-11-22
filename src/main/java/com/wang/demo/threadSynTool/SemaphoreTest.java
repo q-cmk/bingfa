@@ -1,4 +1,4 @@
-package com.wang.test;
+package com.wang.demo.threadSynTool;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;

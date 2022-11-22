@@ -8,7 +8,6 @@ import java.util.concurrent.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import static java.util.concurrent.Executors.newFixedThreadPool;
 
 /**
@@ -27,6 +26,7 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
         }
     }
+
     public void addUser2(List<User> users){
         ExecutorService executorService = newFixedThreadPool(users.size());
         Callers callers = new Callers();
